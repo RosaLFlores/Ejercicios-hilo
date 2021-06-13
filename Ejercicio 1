@@ -1,0 +1,36 @@
+using System;
+using System.Threading;
+
+ 
+// REALIZAR UN PROGRAMA USANDO HILOS EN EL CUAL SE PUEDA ENVIAR UN CORREO A 100 USUARIOS
+
+namespace _1
+{
+    class Program
+    {
+        public static void hilo1()//sub procesos
+        { 
+            for(int i=1;i<=50;i++)
+            {
+              Console.WriteLine("Correo a Usuario " + i);
+            }
+            
+        }
+        public static void hilo2()//sub procesos
+        {
+            for (int j = 51; j <=100; j++)
+            {
+               Console.WriteLine("Correo a Usuario " + j);
+            }
+               
+        }
+        static void Main(string[] args)//principal
+        {
+            System.Threading.Thread primerhilo= new System.Threading.Thread(new System.Threading.ThreadStart(hilo1));
+            System.Threading.Thread segundohilo = new System.Threading.Thread(new System.Threading.ThreadStart(hilo2));
+
+            primerhilo.Start();
+            segundohilo.Start();
+        }
+    }
+}
